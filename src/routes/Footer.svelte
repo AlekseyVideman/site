@@ -12,13 +12,10 @@
         padding: 0 0 0 var(--global-left-right-padding-dekstop);
         border-top: solid 1px #939393;
     }
-    p {
-        width: 50vw;
-    }
 
     @media (max-width: 391px) {
         footer {
-            padding: 0 0 0 var(--global-left-right-padding-mobile);
+            padding: 0 var(--global-left-right-padding-mobile);
         }
     }
 </style>

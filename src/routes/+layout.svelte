@@ -6,12 +6,12 @@
 
 <style>
     :root {
-        --h1-size-desktop: 128px;
-        --h1-size-mobile: 64px;
-        --h2-size-desktop: 48px;
-        --h2-size-mobile: 20px;
-        --p-size-desktop: 24px;
-        --p-size-mobile: 18px;
+        --h1-size-desktop: 8rem; /* 128px / 16px = 8rem */
+        --h1-size-mobile: 4rem; /* 64px / 16px = 4rem */
+        --h2-size-desktop: 3rem; /* 48px / 16px = 3rem */
+        --h2-size-mobile: 1.25rem; /* 20px / 16px = 1.25rem */
+        --p-size-desktop: 1.5rem; /* 24px / 16px = 1.5rem */
+        --p-size-mobile: 1.125rem; /* 18px / 16px = 1.125rem */
 
         --p-font-family: "Noto Sans", Arial, Helvetica, Roboto, Open Sans,
             Liberation Sans, Fira Sans, sans-serif;
