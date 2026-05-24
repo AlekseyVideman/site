@@ -239,7 +239,7 @@
     grid-column: span 12;
 
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     column-gap: var(--column-gap);
   }
 
@@ -293,6 +293,7 @@
     }
 
     #services > .service {
+      width: auto;
       border: solid 1px white;
       padding: 0 var(--global-left-right-padding-mobile);
     }
@@ -321,7 +322,7 @@
     }
     #skills > #skills-table {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr 1fr 1fr;
       column-gap: var(--column-gap);
       padding: 0 var(--global-left-right-padding-mobile);
     }
@@ -343,6 +344,15 @@
     }
     #contacts > #message-example {
       padding: 0 var(--global-left-right-padding-mobile);
+    }
+  }
+  @media (max-width: 360px) {
+    #stages > h1 {
+      font-size: 2.5rem; /* для читаемости */
+    }
+
+    #skills > #skills-table {
+      grid-template-columns: 1fr 1fr;
     }
   }
 </style>

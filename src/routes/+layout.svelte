@@ -70,4 +70,9 @@
             font-size: var(--p-size-mobile);
         }
     }
+    @media (max-width: 360px) {
+        :global(h1) {
+            font-size: var(--h2-size-desktop);
+        }
+    }
 </style>
