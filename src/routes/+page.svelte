@@ -1,6 +1,7 @@
 <script lang="ts">
   import { base } from "$app/paths";
   import Footer from "./Footer.svelte";
+  import { max, tenchat, vk } from "./contacts.js";
 
   function greeting() {
     let hour = new Date().getHours();
@@ -18,6 +19,7 @@
   }
 
   const skills = [
+    "java",
     "git",
     "gradle",
     "linux",
@@ -35,6 +37,7 @@
     "mockito",
     "kafka",
     "grpc",
+    "svelte",
   ];
   let skillsView = $state([...skills]);
 </script>
@@ -131,12 +134,9 @@
       </div>
     {/snippet}
 
-    {@render contact(
-      "MAX",
-      "https://max.ru/u/f9LHodD0cOIp7Qwm0oQzOVfnZEBLgDIZnQRJ2mo6_Gr1iofVB0M8_evdOzE",
-    )}
-    {@render contact("VK", "https://vk.com/alvideman")}
-    {@render contact("Tenchat", "https://tenchat.ru/videman")}
+    {@render contact("MAX", `${max}`)}
+    {@render contact("VK", `${vk}`)}
+    {@render contact("Tenchat", `${tenchat}`)}
   </div>
   <div id="message-example">
     <h2>Шаблон сообщения</h2>
@@ -148,211 +148,187 @@
 </section>
 <Footer />
 
-<style>
-  section {
+<style lang="sass">
+  section  
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     column-gap: var(--column-gap);
     padding: 0 var(--global-left-right-padding-dekstop);
-  }
-  section:not(#hero) {
-    margin-top: 50vh;
-  }
+    
+    &:not(#hero)
+      margin-top: 50vh;
+  
 
-  #hero h3 {
-    grid-column: 7 / 13;
-    font-family: var(--p-font-family);
-    font-size: 40px;
-    margin-top: -2em;
-  }
-  #hero p {
-    font-size: 36px;
-  }
-  #hero #intro {
-    grid-column: 7 / 12;
-  }
-  #hero #cta-btn {
-    grid-column: 7 / 13;
-    margin-top: 3em;
-    padding: 36px 0;
-    font-size: 36px;
-    text-align: center;
-    font-weight: bold;
-    background-color: white;
-    color: black;
-  }
+  #hero
+    h3 
+      grid-column: 7 / 13;
+      font-family: var(--p-font-family);
+      font-size: 40px;
+      margin-top: -2em;
+  
+    p 
+      font-size: 36px;
+  
+    #intro 
+      grid-column: 7 / 12;
+  
+    #cta-btn 
+      grid-column: 7 / 13;
+      margin-top: 3em;
+      padding: 36px 0;
+      font-size: 36px;
+      text-align: center;
+      font-weight: bold;
+      background-color: white;
+      color: black;
+  
 
-  .service {
+  .service 
     width: 330px;
     height: 330px;
-  }
-  .service > p {
-    height: 126px;
-  }
-  .service > a {
-    display: flex;
-    color: white;
-  }
-  .service > a > img {
-    margin-left: var(--p-size-desktop);
-    width: var(--p-size-desktop);
-  }
-
-  .value {
+    p 
+      height: 126px;
+    a 
+      display: flex;
+      color: white;
+      img 
+        margin-left: var(--p-size-desktop);
+        width: var(--p-size-desktop);
+  
+  .value 
     grid-column: span 4;
     height: 264px;
-  }
-  .value:not(:nth-child(2)) {
-    grid-row: 3 / 4;
-  }
-  .value:nth-child(3) {
-    grid-column: 5 / 9;
-  }
-  .value:nth-child(4) {
-    grid-column: 9 / 13;
-  }
+    &:not(:nth-child(2)) 
+      grid-row: 3 / 4;
+    &:nth-child(3) 
+      grid-column: 5 / 9;
+    &:nth-child(4) 
+      grid-column: 9 / 13;
+  
 
-  #stages {
+  #stages 
     grid-template-rows: 1fr 1fr 1fr;
-  }
-  #stages > h2 {
-    grid-column: span 4;
-  }
-  #stages > h2:nth-child(odd) {
-    grid-row: 3;
-  }
+    h2 
+      grid-column: span 4;
+      &:nth-child(odd) 
+        grid-row: 3;
 
-  #skills > input {
-    height: 79px;
-    grid-column: span 12;
-    padding: var(--p-size-desktop);
-    background: none;
-    font-size: var(--p-size-desktop);
-    font-family: var(--p-font-family);
-    border: solid 0.3rem white;
-    color: white;
-  }
-  #skills > input::placeholder {
-    color: white;
-  }
-  #skills > #skills-table {
-    grid-column: span 12;
+  #skills
+    input 
+      height: 79px;
+      grid-column: span 12;
+      padding: var(--p-size-desktop);
+      background: none;
+      font-size: var(--p-size-desktop);
+      font-family: var(--p-font-family);
+      border: solid 0.3rem white;
+      color: white;
+      &::placeholder 
+        color: white;
+    #skills-table 
+      grid-column: span 12;
 
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    column-gap: var(--column-gap);
-  }
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      column-gap: var(--column-gap);
 
-  #contacts > #contact-list {
-    grid-column: span 6;
+  #contacts
+    #contact-list 
+      grid-column: span 6;
 
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-  }
-  .contact {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+    #message-example 
+      grid-column: 7 / 13;
+      grid-row: 3;
+  
+  .contact 
     grid-column: span 3;
-  }
-  .contact > a {
-    margin-top: -1.5em;
-
-    display: flex;
-    color: white;
-  }
-  .contact > a > img {
-    margin-left: var(--p-size-desktop);
-    width: var(--p-size-desktop);
-  }
-  #contacts > #message-example {
-    grid-column: 7 / 13;
-    grid-row: 3;
-  }
+    a 
+      margin-top: -1.5em;
+      display: flex;
+      color: white;
+      img 
+        margin-left: var(--p-size-desktop);
+        width: var(--p-size-desktop);
+  
+  
 
   /* MOBILE */
-  @media (max-width: 391px) {
-    section {
+  @media (max-width: 391px) 
+    section 
       display: flex;
       flex-direction: column;
       padding: 0;
       gap: var(--column-gap);
-    }
-    section:not(#hero) {
-      margin-top: 20vh;
-    }
+      &:not(#hero) 
+        margin-top: 20vh;
 
-    #hero > h3 {
-      place-self: end;
-      font-size: var(--h2-size-mobile);
-    }
-    #hero p {
-      font-size: var(--p-size-mobile);
-      padding: 0 var(--global-left-right-padding-mobile);
-    }
-    #hero #cta-btn {
-      padding: var(--h2-size-mobile) 0;
-      font-size: var(--h2-size-mobile);
-    }
+    #hero
+      h3 
+        place-self: end;
+        font-size: var(--h2-size-mobile);
+      p 
+        font-size: var(--p-size-mobile);
+        padding: 0 var(--global-left-right-padding-mobile);
+      #cta-btn 
+        padding: var(--h2-size-mobile) 0;
+        font-size: var(--h2-size-mobile);
 
-    #services > .service {
+    #services > .service 
       width: auto;
       border: solid 1px white;
       padding: 0 var(--global-left-right-padding-mobile);
-    }
+    
 
-    #values > .value {
+    #values > .value 
       height: fit-content;
       padding: 0 var(--global-left-right-padding-mobile);
-    }
+    
 
-    #contacts > #contact-list {
+    #contacts > #contact-list 
       gap: var(--column-gap);
-    }
+    
 
-    #stages > h1 {
-      font-size: var(--h2-size-desktop); /* для читаемости */
-    }
-    #stages > h2 {
-      padding: 0 var(--global-left-right-padding-mobile);
-    }
+    #stages
+      h1 
+        font-size: var(--h2-size-desktop); /* для читаемости */
+      h2 
+        padding: 0 var(--global-left-right-padding-mobile);
+    
 
-    #skills > input {
+    #skills > input 
       height: 55px;
       padding: var(--p-size-mobile);
       font-size: var(--p-size-mobile);
       border: solid 0.1rem white;
-    }
-    #skills > #skills-table {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      column-gap: var(--column-gap);
-      padding: 0 var(--global-left-right-padding-mobile);
-    }
+      #skills-table 
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: var(--column-gap);
+        padding: 0 var(--global-left-right-padding-mobile);
 
-    .contact {
+    .contact 
       grid-column: span 6;
 
       display: grid;
       grid-template-columns: 1fr 1fr;
       border: solid 1px white;
       padding: 0 var(--global-left-right-padding-mobile);
-    }
-    .contact > a > img {
-      margin-left: var(--p-size-mobile);
-      width: var(--p-size-mobile);
-    }
-    .contact > a {
-      margin-top: 0;
-    }
-    #contacts > #message-example {
-      padding: 0 var(--global-left-right-padding-mobile);
-    }
-  }
-  @media (max-width: 360px) {
-    #stages > h1 {
+      a 
+        margin-top: 0;
+        img 
+          margin-left: var(--p-size-mobile);
+          width: var(--p-size-mobile);
+      #message-example 
+        padding: 0 var(--global-left-right-padding-mobile);
+  
+  @media (max-width: 360px) 
+    #stages > h1 
       font-size: 2.5rem; /* для читаемости */
-    }
-
-    #skills > #skills-table {
+    
+    #skills > #skills-table 
       grid-template-columns: 1fr 1fr;
-    }
-  }
+    
+
 </style>
