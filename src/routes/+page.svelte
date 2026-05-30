@@ -1,7 +1,5 @@
 <script lang="ts">
-  import { base } from "$app/paths";
-  import Footer from "./Footer.svelte";
-  import { max, tenchat, vk } from "./contacts.js";
+  import { resolve } from "$app/paths";
 
   function greeting() {
     let hour = new Date().getHours();
@@ -20,8 +18,12 @@
 
   const skills = [
     "java",
+    "clojure",
+    "typescript",
+    "open api",
     "git",
     "gradle",
+    "maven",
     "linux",
     "postgresql",
     "docker",
@@ -30,13 +32,17 @@
     "spring framework",
     "liquibase",
     "kubernetes",
-    "gitlab ci",
+    "ci",
     "hibernate",
     "mybatis",
-    "junit5",
+    "jooq",
+    "junit",
     "mockito",
     "kafka",
     "grpc",
+    "max api",
+    "javafx",
+    "вёрстка",
     "svelte",
   ];
   let skillsView = $state([...skills]);
@@ -58,7 +64,7 @@
 </section>
 <section id="services">
   <h1>Услуги</h1>
-  {#snippet service(
+  {#snippet Service(
     name: string,
     description: string,
     full_description_url: string,
@@ -68,30 +74,34 @@
       <p>{description}</p>
       <a href={full_description_url}>
         <p>Подробнее</p>
-        <img src="icons/arrowupright.svg" alt="" />
+        <img src="/icons/arrowupright.svg" alt="" />
       </a>
     </div>
   {/snippet}
 
-  {@render service("Бот Max", "Автоматизируйте обработку заявок от лидов", "")}
-  {@render service(
+  {@render Service(
+    "Бот Max",
+    "Бездушная машина для печати денег.",
+    resolve("/max-bot"),
+  )}
+  <!-- {@render service( пока фокус на одной услуге
     "Tg в Max",
     "Сделаю копию Телеграмм-бота для Max. Ваши клиенты не заметят разницы",
     "",
-  )}
+  )} -->
 </section>
 <section id="values">
   <h1>Ценности</h1>
-  {#snippet value(name: string, description: string)}
+  {#snippet Value(name: string, description: string)}
     <div class="value">
       <h2>{name}</h2>
       <p>{description}</p>
     </div>
   {/snippet}
 
-  {@render value("Долгосрочное сотрудничество", "Делаю не на один раз.")}
-  {@render value("Довольный клиент", "— довольный я.")}
-  {@render value("Честность", "Сообщаю о проблемах, если они есть.")}
+  {@render Value("Долгосрочное сотрудничество", "Делаю не на один раз.")}
+  {@render Value("Довольный клиент", "— довольный я.")}
+  {@render Value("Честность", "Сообщаю о проблемах, если они есть.")}
 </section>
 <section id="stages">
   <h1>Этапы сотрудничества</h1>
@@ -120,45 +130,8 @@
     {/each}
   </div>
 </section>
-<section id="contacts">
-  <h1>Контакты</h1>
-
-  <div id="contact-list">
-    {#snippet contact(name: string, url: string)}
-      <div class="contact">
-        <h2>{name}</h2>
-        <a href={url}>
-          <p>Перейти</p>
-          <img src="icons/arrowupright.svg" alt="" />
-        </a>
-      </div>
-    {/snippet}
-
-    {@render contact("MAX", `${max}`)}
-    {@render contact("VK", `${vk}`)}
-    {@render contact("Tenchat", `${tenchat}`)}
-  </div>
-  <div id="message-example">
-    <h2>Шаблон сообщения</h2>
-    <p>
-      Добрый день, Алексей! Нужен бот MAX: уведомления, заявки, вопросы,
-      интеграция с CRM.
-    </p>
-  </div>
-</section>
-<Footer />
 
 <style lang="sass">
-  section  
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: var(--column-gap);
-    padding: 0 var(--global-left-right-padding-dekstop);
-    
-    &:not(#hero)
-      margin-top: 50vh;
-  
-
   #hero
     h3 
       grid-column: 7 / 13;
@@ -181,7 +154,6 @@
       font-weight: bold;
       background-color: white;
       color: black;
-  
 
   .service 
     width: 330px;
@@ -204,7 +176,6 @@
       grid-column: 5 / 9;
     &:nth-child(4) 
       grid-column: 9 / 13;
-  
 
   #stages 
     grid-template-rows: 1fr 1fr 1fr;
@@ -232,45 +203,14 @@
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       column-gap: var(--column-gap);
 
-  #contacts
-    #contact-list 
-      grid-column: span 6;
-
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-    #message-example 
-      grid-column: 7 / 13;
-      grid-row: 3;
-  
-  .contact 
-    grid-column: span 3;
-    a 
-      margin-top: -1.5em;
-      display: flex;
-      color: white;
-      img 
-        margin-left: var(--p-size-desktop);
-        width: var(--p-size-desktop);
-  
-  
-
   /* MOBILE */
   @media (max-width: 391px) 
-    section 
-      display: flex;
-      flex-direction: column;
-      padding: 0;
-      gap: var(--column-gap);
-      &:not(#hero) 
-        margin-top: 20vh;
-
     #hero
       h3 
         place-self: end;
         font-size: var(--h2-size-mobile);
       p 
         font-size: var(--p-size-mobile);
-        padding: 0 var(--global-left-right-padding-mobile);
       #cta-btn 
         padding: var(--h2-size-mobile) 0;
         font-size: var(--h2-size-mobile);
@@ -278,24 +218,13 @@
     #services > .service 
       width: auto;
       border: solid 1px white;
-      padding: 0 var(--global-left-right-padding-mobile);
-    
 
     #values > .value 
       height: fit-content;
-      padding: 0 var(--global-left-right-padding-mobile);
-    
-
-    #contacts > #contact-list 
-      gap: var(--column-gap);
-    
 
     #stages
       h1 
         font-size: var(--h2-size-desktop); /* для читаемости */
-      h2 
-        padding: 0 var(--global-left-right-padding-mobile);
-    
 
     #skills > input 
       height: 55px;
@@ -306,22 +235,6 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         column-gap: var(--column-gap);
-        padding: 0 var(--global-left-right-padding-mobile);
-
-    .contact 
-      grid-column: span 6;
-
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border: solid 1px white;
-      padding: 0 var(--global-left-right-padding-mobile);
-      a 
-        margin-top: 0;
-        img 
-          margin-left: var(--p-size-mobile);
-          width: var(--p-size-mobile);
-      #message-example 
-        padding: 0 var(--global-left-right-padding-mobile);
   
   @media (max-width: 360px) 
     #stages > h1 
@@ -329,6 +242,4 @@
     
     #skills > #skills-table 
       grid-template-columns: 1fr 1fr;
-    
-
 </style>
