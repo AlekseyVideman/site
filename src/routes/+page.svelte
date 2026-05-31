@@ -158,8 +158,6 @@
   .service 
     width: 330px;
     height: 330px;
-    p 
-      height: 126px;
     a 
       display: flex;
       color: white;
