@@ -128,8 +128,10 @@
 
     #abilities
         overflow-x: hidden
+        padding: 0
         row-gap: var(--h2-size-desktop)
         h1
+            padding: 0 0 0 var(--global-left-right-padding-dekstop)
             font-size: 48px
         .ability
             grid-column: span 12
@@ -141,8 +143,11 @@
                 text-align: center
             img
                 grid-column: 6 / 13
+                width: 100%
+                object-fit: cover
 
         #cta
+            padding: 0 0 0 var(--global-left-right-padding-dekstop)
             grid-column: span 7
             display: flex
             flex-direction: column
