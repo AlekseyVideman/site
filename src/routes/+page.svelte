@@ -49,7 +49,7 @@
 </script>
 
 <svelte:head>
-  <title>Главная</title>
+  <title>Главная. Алексей Видеман</title>
 </svelte:head>
 <section id="hero">
   <h1>АЛЕКСЕЙ ВИДЕМАН</h1>
