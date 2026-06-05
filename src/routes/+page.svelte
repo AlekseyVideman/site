@@ -50,6 +50,7 @@
 
 <svelte:head>
   <title>Главная. Алексей Видеман</title>
+  <meta name="yandex-verification" content="4b391af5948c5e63" />
 </svelte:head>
 <section id="hero">
   <h1>АЛЕКСЕЙ ВИДЕМАН</h1>
