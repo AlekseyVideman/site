@@ -52,6 +52,7 @@
   <title>Главная. Алексей Видеман</title>
   <meta name="yandex-verification" content="4b391af5948c5e63" />
   <meta name="msvalidate.01" content="6ECB637CFACBBFED83A3618C4831896D" />
+  <meta name="google-site-verification" content="YEeDbWBCGTlBLWYGqlykvEk27au4C6YeHYjSq9Vx86Q" />
 </svelte:head>
 <section id="hero">
   <h1>АЛЕКСЕЙ ВИДЕМАН</h1>
