@@ -124,7 +124,7 @@
     footer
         height: 150px
         margin-top: auto
-        padding: 0 0 0 var(--global-left-right-padding-dekstop)
+        padding: var(--global-left-right-padding-dekstop) 0 0 var(--global-left-right-padding-dekstop)
         border-top: solid 1px #939393
 
     /* MOBILE */
@@ -168,6 +168,7 @@
 
         footer
             padding: 0
+            padding-top: var(--global-left-right-padding-mobile)
     
     @media (max-width: 360px) 
         :global(h1) 

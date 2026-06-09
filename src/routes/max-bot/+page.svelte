@@ -193,10 +193,13 @@
 
     @media (max-width: 391px)
         #abilities
+            h1
+                padding: 0 0 0 var(--global-left-right-padding-mobile)
             .ability
                 display: flex
                 flex-direction: column
             #cta
+                padding: 0
                 #cta-btn
                     width: 100%
                     padding: var(--h2-size-mobile) 0
